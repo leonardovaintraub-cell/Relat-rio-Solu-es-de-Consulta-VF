@@ -207,7 +207,7 @@
   @media (max-width: 700px) { .main-body { flex-direction: column; } aside { width: 100%; height: auto; position: static; padding: 1rem; border-right: none; border-bottom: 1px solid var(--border); } header { padding: 0 1rem; height: auto; padding-top: 0.75rem; padding-bottom: 0.75rem; } .header-sub { display: none; } main { padding: 1.5rem 1rem; } }
 </style>
 </head>
-<body style="overflow: hidden;">
+<body style="">
 <div class="app" id="app-root">
   <header>
     <div class="header-brand">
@@ -414,7 +414,7 @@ A Receita Federal concluiu que a retenção da contribuição previdenciária do
 </div>
 
 <!-- MODAL PUBLICAR GITHUB PAGES -->
-<div class="modal-overlay open" id="modal-export" onclick="closeOnBg(event,'modal-export')">
+<div class="modal-overlay" id="modal-export" onclick="closeOnBg(event,'modal-export')">
   <div class="modal modal-sm">
     <button class="modal-close" onclick="closeModal('modal-export')">✕</button>
     <div class="modal-header">
@@ -743,12 +743,17 @@ function openExportModal() { openModal('modal-export'); }
 
 function downloadPublishable() {
   if (!cards.length) { showToast('Adicione ao menos uma SC antes de exportar.','error'); return; }
+
+  // Fecha todos os modais antes de capturar o HTML
+  ['modal-add','modal-edit','modal-export'].forEach(id => {
+    document.getElementById(id).classList.remove('open');
+  });
+  document.body.style.overflow = '';
+
   showToast('Gerando arquivo...','success');
 
-  // Pega o HTML atual desta página e substitui EMBEDDED_CARDS pelo JSON real
   const html = document.documentElement.outerHTML;
   const cardsJson = JSON.stringify(cards);
-  // Substitui a linha const EMBEDDED_CARDS = null pelo array real
   const exported = html.replace(
     'const EMBEDDED_CARDS = null; // substituído no export',
     `const EMBEDDED_CARDS = ${cardsJson};`
@@ -760,7 +765,6 @@ function downloadPublishable() {
   a.download = 'index.html';
   a.click();
   URL.revokeObjectURL(a.href);
-  closeModal('modal-export');
   showToast('index.html baixado! Siga os passos do GitHub Pages para publicar.','success');
 }
 
