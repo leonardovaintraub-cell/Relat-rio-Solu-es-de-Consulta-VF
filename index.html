@@ -2056,9 +2056,9 @@ Dispositivos Legais: Instrução Normativa RFB nº 2.058, de 9 de dezembro de 20
     </div>
     <div class="process-status" id="process-status"></div>
     <div style="margin-bottom:1rem;">
-      <button class="manual-toggle-btn" id="manual-toggle-btn" onclick="toggleManualForm()">← Usar extração automática</button>
+      <button class="manual-toggle-btn" id="manual-toggle-btn" onclick="toggleManualForm()">✏️ Preencher manualmente</button>
     </div>
-    <div class="manual-form-section visible" id="manual-form">
+    <div class="manual-form-section" id="manual-form">
       <div class="form-row">
         <div class="form-group"><label>Número da SC</label><input type="text" id="f-numero" placeholder="Ex: SC nº 123/2025"></div>
         <div class="form-group"><label>Data de Publicação</label><input type="text" id="f-data" placeholder="DD/MM/AAAA"></div>
@@ -2072,8 +2072,8 @@ Dispositivos Legais: Instrução Normativa RFB nº 2.058, de 9 de dezembro de 20
     </div>
     <div class="modal-footer">
       <button class="btn-secondary" onclick="closeModal('modal-add')">Cancelar</button>
-      <button class="btn-primary" id="btn-process" onclick="processar()" style="display: none;">⚡ Processar com IA</button>
-      <button class="btn-primary" id="btn-save-manual" onclick="saveManual()" style="">💾 Salvar</button>
+      <button class="btn-primary" id="btn-process" onclick="processar()">⚡ Processar com IA</button>
+      <button class="btn-primary" id="btn-save-manual" onclick="saveManual()" style="display:none;">💾 Salvar</button>
     </div>
   </div>
 </div>
@@ -2101,11 +2101,11 @@ Dispositivos Legais: Instrução Normativa RFB nº 2.058, de 9 de dezembro de 20
       <div class="link-input-wrap">
         <input type="url" id="edit-link-input" placeholder="https://normas.receita.fazenda.gov.br/..." oninput="onLinkInput('edit')">
       </div>
-      <div class="link-preview show" id="edit-link-preview">
-        🔗 <a id="edit-link-preview-a" href="https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/151474" target="_blank" rel="noopener">https://normasinternet2.receita.fazenda.gov.br/#/consulta/externa/151474</a>
+      <div class="link-preview" id="edit-link-preview">
+        🔗 <a id="edit-link-preview-a" href="#" target="_blank" rel="noopener">—</a>
       </div>
     </div>
-    <input type="hidden" id="e-id" value="1780328492404">
+    <input type="hidden" id="e-id">
     <div class="modal-footer">
       <button class="btn-secondary" onclick="closeModal('modal-edit')">Cancelar</button>
       <button class="btn-primary" onclick="saveEdit()">💾 Salvar Alterações</button>
